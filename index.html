@@ -1,1 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>세무법인 서월 | 백승삼 세무사 무료 상담</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{--p:#FF6B35;--pd:#E85A25;--pl:#FFF3EE;--navy:#0F1F4B;--gold:#F5C518;--text:#17181C;--sub:#6B7280;--border:#EAEDF2;--bg:#F5F6FA;--white:#fff;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);max-width:480px;margin:0 auto;line-height:1.6;}
+    .hd{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;}
+    .hd-logo{display:flex;align-items:center;gap:8px;}
+    .hd-icon{width:32px;height:32px;border-radius:8px;background:var(--p);display:flex;align-items:center;justify-content:center;font-size:16px;}
+    .hd-name{font-size:13px;font-weight:800;color:var(--text);}
+    .hd-name em{font-style:normal;color:var(--p);}
+    .hd-cta{background:var(--p);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:20px;border:none;cursor:pointer;}
+    .hero{background:var(--white);padding:32px 22px 28px;border-bottom:1px solid var(--border);}
+    .hero-tag{display:inline-flex;align-items:center;gap:5px;background:var(--pl);color:var(--p);font-size:11px;font-weight:800;padding:4px 11px;border-radius:20px;margin-bottom:14px;}
+    .hero-h{font-size:23px;font-weight:900;line-height:1.4;margin-bottom:10px;}
+    .hero-h .hl{color:var(--p);}
+    .hero-sub{font-size:14px;color:var(--sub);line-height:1.75;margin-bottom:22px;}
+    .hero-sub strong{color:var(--text);}
+    .hero-btn{width:100%;padding:16px;background:var(--p);border:none;border-radius:14px;font-size:16px;font-weight:900;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(255,107,53,.3);}
+    .hero-btn span{font-size:12px;font-weight:600;opacity:.85;}
+    .strip{background:var(--navy);padding:16px 18px;display:flex;justify-content:space-around;}
+    .sn{text-align:center;}
+    .sn-num{font-size:18px;font-weight:900;color:var(--gold);}
+    .sn-lbl{font-size:10px;color:rgba(255,255,255,.65);margin-top:2px;line-height:1.4;}
+    .chk-sec{background:var(--white);padding:28px 22px;}
+    .sec-tag{display:inline-block;background:var(--pl);color:var(--p);font-size:11px;font-weight:800;padding:3px 11px;border-radius:20px;margin-bottom:10px;}
+    .sec-h{font-size:19px;font-weight:900;line-height:1.4;margin-bottom:16px;}
+    .chk-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+    .chk-item{display:flex;align-items:flex-start;gap:10px;background:var(--bg);border-radius:12px;padding:13px 14px;}
+    .chk-dot{width:22px;height:22px;border-radius:50%;background:var(--pl);border:2px solid var(--p);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:var(--p);flex-shrink:0;margin-top:1px;}
+    .chk-txt{font-size:13px;line-height:1.6;color:var(--text);}
+    .chk-txt strong{color:var(--p);}
+    .chk-cta{width:100%;padding:14px;background:var(--pl);border:2px solid var(--p);border-radius:12px;font-size:14px;font-weight:800;color:var(--p);cursor:pointer;}
+    .tx-sec{background:var(--bg);padding:28px 22px;}
+    .tx-card{background:var(--white);border-radius:18px;padding:22px;box-shadow:0 2px 16px rgba(0,0,0,.06);}
+    .tx-top{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+    .tx-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--pl);flex-shrink:0;}
+    .tx-info{}
+    .tx-name{font-size:18px;font-weight:900;}
+    .tx-title{font-size:12px;color:var(--sub);margin-bottom:7px;}
+    .tx-badges{display:flex;flex-wrap:wrap;gap:5px;}
+    .tx-badge{background:var(--pl);color:var(--p);font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;}
+    .tx-quote{font-size:13px;line-height:1.8;color:var(--text);padding:14px;background:var(--bg);border-radius:10px;border-left:3px solid var(--p);margin-top:14px;}
+    .dv{height:8px;background:var(--bg);}
+    .contact-sec{background:var(--white);padding:28px 22px;}
+    .ct-hd{margin-bottom:20px;}
+    .ct-title{font-size:20px;font-weight:900;line-height:1.4;margin-top:10px;margin-bottom:8px;}
+    .ct-sub{font-size:13px;color:var(--sub);line-height:1.6;}
+    .ct-form-wrap{background:var(--bg);border-radius:16px;padding:20px 18px;}
+    .fg{margin-bottom:13px;}
+    .fg label{display:block;font-size:12px;font-weight:700;color:var(--sub);margin-bottom:5px;}
+    .fg input{width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:inherit;color:var(--text);background:var(--white);outline:none;transition:border-color .18s;}
+    .fg input:focus{border-color:var(--p);}
+    .phrow{display:flex;align-items:center;gap:5px;}
+    .phrow input{flex:1;text-align:center;}
+    .phdash{font-size:14px;color:#CCC;font-weight:700;flex-shrink:0;}
+    .agwrap{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+    .agrow{display:flex;align-items:center;justify-content:space-between;}
+    .agl{display:flex;align-items:center;gap:7px;cursor:pointer;}
+    .agl input[type=checkbox]{width:16px;height:16px;accent-color:var(--p);cursor:pointer;}
+    .agl span{font-size:12px;color:var(--sub);}
+    .agv{font-size:11px;color:#C5C5C5;text-decoration:underline;cursor:pointer;}
+    .subbtn{width:100%;padding:15px;background:var(--p);border:none;border-radius:12px;font-size:16px;font-weight:900;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(255,107,53,.32);}
+    .sub-note{text-align:center;font-size:11px;color:var(--sub);margin-top:8px;}
+    .done{display:none;padding:36px 22px;text-align:center;}
+    .done .di{font-size:50px;margin-bottom:12px;}
+    .done h2{font-size:22px;font-weight:900;margin-bottom:7px;}
+    .done p{font-size:13px;color:var(--sub);margin-bottom:18px;line-height:1.8;}
+    .done-box{background:var(--pl);border:1.5px solid var(--p);border-radius:12px;padding:14px;font-size:13px;color:var(--pd);text-align:left;line-height:1.8;}
+    .scroll-hint{margin-top:16px;font-size:13px;color:var(--sub);}
+    .price-sec{background:linear-gradient(160deg,#1a1a2e 0%,#16213e 50%,#0F1F4B 100%);padding:32px 20px 28px;}
+    .pr-eye{font-size:11px;font-weight:700;color:rgba(255,255,255,.55);margin-bottom:8px;letter-spacing:.8px;text-transform:uppercase;}
+    .pr-title{font-size:22px;font-weight:900;color:#fff;line-height:1.35;margin-bottom:20px;}
+    .pr-title .hl{color:var(--p);}
+    /* 절반가격 배너 */
+    .half-banner{background:var(--p);border-radius:14px;padding:13px 16px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 4px 20px rgba(255,107,53,.45);}
+    .half-left{font-size:13px;font-weight:800;color:#fff;line-height:1.5;}
+    .half-badge{background:#fff;color:var(--p);font-size:12px;font-weight:900;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+    /* 가격 카드 그리드 */
+    .pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+    .pr-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.15);border-radius:16px;padding:16px 14px;text-align:center;position:relative;overflow:hidden;}
+    .pr-card.hot{background:rgba(255,107,53,.15);border-color:var(--p);}
+    .pr-card-badge{position:absolute;top:0;right:0;background:var(--p);color:#fff;font-size:9px;font-weight:900;padding:3px 9px;border-radius:0 14px 0 10px;}
+    .pr-type{font-size:11px;color:rgba(255,255,255,.6);font-weight:700;margin-bottom:6px;letter-spacing:.3px;}
+    .pr-orig{font-size:12px;color:rgba(255,255,255,.4);text-decoration:line-through;margin-bottom:2px;font-weight:600;}
+    .pr-price{font-size:36px;font-weight:900;color:#fff;line-height:1;margin-bottom:2px;}
+    .pr-price span{font-size:14px;font-weight:700;color:rgba(255,255,255,.7);}
+    .pr-save{display:flex;flex-direction:column;align-items:center;margin-top:8px;gap:3px;}
+    .pr-save-mo{font-size:10px;color:rgba(255,255,255,.5);font-weight:600;}
+    .pr-save-yr{display:inline-block;background:rgba(245,197,24,.25);color:var(--gold);font-size:13px;font-weight:900;padding:4px 10px;border-radius:20px;border:1px solid rgba(245,197,24,.4);letter-spacing:-.3px;}
+    .pr-save-label{font-size:9px;color:var(--gold);font-weight:700;opacity:.8;}
+    /* 비교 설명 */
+    .pr-cmp-row{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;margin-bottom:12px;}
+    .pr-cmp-row p{font-size:13px;color:rgba(255,255,255,.8);line-height:1.7;}
+    .pr-cmp-row strong{color:#fff;font-weight:900;}
+    .pr-cmp-row .emo{font-size:16px;margin-right:4px;}
+    .pr-note{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:12px;}
+    .badge-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;}
+    .bdg{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:800;padding:6px 12px;border-radius:20px;}
+    .bdg.o{background:rgba(255,107,53,.2);color:#FF6B35;border:1px solid rgba(255,107,53,.4);}
+    .bdg.b{background:rgba(245,197,24,.15);color:var(--gold);border:1px solid rgba(245,197,24,.3);}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+    .chip{background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.32);color:#fff;font-size:11px;font-weight:600;padding:5px 11px;border-radius:20px;}
+    .pol-sec{background:var(--navy);padding:30px 22px;}
+    .pol-tag{display:inline-block;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+    .pol-title{font-size:21px;font-weight:900;color:#fff;line-height:1.4;margin-bottom:8px;}
+    .pol-title .hl{color:var(--gold);}
+    .pol-desc{font-size:13px;color:rgba(255,255,255,.72);line-height:1.8;margin-bottom:20px;}
+    .pol-box{background:rgba(255,255,255,.07);border-radius:13px;padding:16px;margin-bottom:14px;}
+    .pol-ttl{font-size:11px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+    .pi{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px;}
+    .pi:last-child{margin-bottom:0;}
+    .pck{width:19px;height:19px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:var(--navy);flex-shrink:0;margin-top:2px;}
+    .pt{font-size:13px;color:rgba(255,255,255,.88);line-height:1.5;}
+    .pt strong{color:#fff;}
+    .pol-cta{background:rgba(245,197,24,.15);border:1.5px solid var(--gold);border-radius:11px;padding:13px;text-align:center;}
+    .pol-cta-t{font-size:13px;font-weight:800;color:var(--gold);}
+    .pol-cta-s{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;}
+    .sec{padding:28px 22px;background:var(--white);}
+    .sec-title{font-size:19px;font-weight:900;line-height:1.4;margin-bottom:4px;}
+    .sec-sub{font-size:13px;color:var(--sub);margin-bottom:18px;}
+    .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+    .sc{background:var(--bg);border-radius:13px;padding:15px 11px;text-align:center;border:1.5px solid transparent;transition:border-color .18s;}
+    .sc:hover{border-color:var(--p);}
+    .sc-i{font-size:24px;margin-bottom:5px;}
+    .sc-n{font-size:13px;font-weight:800;margin-bottom:2px;}
+    .sc-d{font-size:11px;color:var(--sub);line-height:1.5;}
+    .rv-wrap{display:flex;flex-direction:column;gap:11px;}
+    .rv{background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:15px;}
+    .rv-hd{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+    .rv-av{width:36px;height:36px;border-radius:50%;background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:18px;}
+    .rv-nm{font-size:13px;font-weight:800;}
+    .rv-tp{font-size:11px;color:var(--sub);margin-top:1px;}
+    .rv-st{color:#F59E0B;font-size:12px;margin-bottom:5px;}
+    .rv-tx{font-size:13px;line-height:1.7;}
+    .faq-item{border-bottom:1px solid var(--border);}
+    .fq{padding:14px 0;font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:10px;}
+    .farr{color:var(--sub);font-size:11px;flex-shrink:0;transition:transform .2s;}
+    .fq.open .farr{transform:rotate(180deg);}
+    .fa{display:none;padding:0 0 13px;font-size:13px;color:var(--sub);line-height:1.8;}
+    .fa.open{display:block;}
+    .btm{padding:18px 22px 28px;}
+    .btm-top{text-align:center;font-size:13px;color:var(--sub);margin-bottom:10px;}
+    .btm-btn{width:100%;padding:16px;background:var(--p);border:none;border-radius:14px;font-size:16px;font-weight:900;color:#fff;cursor:pointer;box-shadow:0 4px 16px rgba(255,107,53,.3);}
+    footer{background:#1A1B22;color:#888;font-size:12px;padding:22px;line-height:1.9;}
+    footer strong{color:#CCC;}
+    @media(min-width:481px){body{box-shadow:0 0 40px rgba(0,0,0,.07);}}
+  </style>
+</head>
+<body>
+<div class="hd">
+  <div class="hd-logo"><div class="hd-icon">📋</div><div class="hd-name">세무기장 전문 <em>세무법인 서월</em></div></div>
+  <button class="hd-cta" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">무료 상담 →</button>
+</div>
+<div class="hero">
+  <div class="hero-tag">🥕 당근마켓 광고 특별 혜택</div>
+  <h1 class="hero-h">지금 세무사가<br/><span class="hl">제대로 챙겨주고 있나요?</span><br/>비교만 해보세요</h1>
+  <p class="hero-sub">개인 <strong>월 6만원</strong> · 법인 <strong>월 10만원</strong>부터<br/>타 세무사 12~20만원과 <strong>같은 서비스, 절반 가격</strong>이에요.</p>
+  <button class="hero-btn" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">📞 무료 상담 신청하기<br/><span>→ 상담만 받아보셔도 괜찮아요, 부담 없어요</span></button>
+</div>
+<div class="strip">
+  <div class="sn"><div class="sn-num">5년+</div><div class="sn-lbl">세무기장<br/>전문 경력</div></div>
+  <div class="sn"><div class="sn-num">2,000건+</div><div class="sn-lbl">법인·개인<br/>세무조정 완료</div></div>
+  <div class="sn"><div class="sn-num">소상공인</div><div class="sn-lbl">사장님<br/>전문 세무사</div></div>
+</div>
+<div class="price-sec">
+  <div class="pr-eye">💰 기장 수수료 안내</div>
+  <div class="pr-title">타 세무사의 <span class="hl">절반 가격</span>으로<br/>똑같은 서비스 받으세요</div>
+  <div class="half-banner">
+    <div class="half-left">✅ 타 세무사 월 12~20만원과<br/><strong>완전히 동일한 서비스</strong></div>
+    <div class="half-badge">🔥 절반 가격</div>
+  </div>
+  <div class="pr-grid">
+    <div class="pr-card">
+      <div class="pr-type">개인사업자</div>
+      <div class="pr-orig">타 세무사 12~15만원</div>
+      <div class="pr-price">6<span>만원~</span></div>
+      <div class="pr-save">
+        <div class="pr-save-mo">월 최대 9만원 절약</div>
+        <div class="pr-save-yr">💰 연 최대 108만원 절약</div>
+      </div>
+    </div>
+    <div class="pr-card hot">
+      <div class="pr-card-badge">법인 추천</div>
+      <div class="pr-type">법인사업자</div>
+      <div class="pr-orig">타 세무사 15~20만원</div>
+      <div class="pr-price">10<span>만원~</span></div>
+      <div class="pr-save">
+        <div class="pr-save-mo">월 최대 10만원 절약</div>
+        <div class="pr-save-yr">💰 연 최대 120만원 절약</div>
+      </div>
+    </div>
+  </div>
+  <div class="pr-cmp-row">
+    <p><span class="emo">💡</span>같은 기장 서비스, 같은 세금 신고, 같은 절세 컨설팅을<br/><strong>연간 최대 108~120만원 더 아끼면서</strong> 받을 수 있어요.</p>
+  </div>
+  <div class="pr-note">※ 매출·업종에 따라 달라질 수 있어요. 상담 후 확정됩니다.</div>
+  <div class="badge-row"><span class="bdg o">🎁 첫달 기장료 100% 지원</span><span class="bdg b">🏦 정책자금 리포트 기장고객 혜택</span></div>
+  <div class="chips"><span class="chip">✓ 부가세 신고 포함</span><span class="chip">✓ 종합소득세 포함</span><span class="chip">✓ 수시 세무 상담</span><span class="chip">✓ 빠른 카카오톡 응대</span><span class="chip">✓ 정책자금 먼저 챙겨드려요</span><span class="chip">✓ 타 세무사 대비 50% 절약</span></div>
+</div>
+<div class="chk-sec">
+  <div class="sec-tag">이런 분이신가요?</div>
+  <div class="sec-h">혹시 지금 이런 불편함,<br/>있으신가요?</div>
+  <div class="chk-list">
+    <div class="chk-item"><div class="chk-dot">✓</div><div class="chk-txt">세무사가 <strong>정책자금·정부지원금을 먼저 알려준 적</strong>이 없다</div></div>
+    <div class="chk-item"><div class="chk-dot">✓</div><div class="chk-txt">세무사에게 카톡 보내면 <strong>답장이 하루 이상</strong> 걸린다</div></div>
+    <div class="chk-item"><div class="chk-dot">✓</div><div class="chk-txt"><strong>절세 방법을 먼저 알려주는 일</strong>이 거의 없다</div></div>
+    <div class="chk-item"><div class="chk-dot">✓</div><div class="chk-txt">기장료가 적정한지 <strong>다른 곳과 비교조차 못 해봤다</strong></div></div>
+  </div>
+  <button class="chk-cta" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">📞 하나라도 해당되면 무료 상담 받아보세요 →</button>
+</div>
+<div class="dv"></div>
+<div class="tx-sec">
+  <div class="tx-card">
+    <div class="tx-top">
+      <div class="tx-photo-wrap"><img id="taxPhoto" src="data:image/jpeg;base64,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" class="tx-photo" alt="백승삼 세무사"></div>
+      <div class="tx-info">
+        <div class="tx-name">백승삼 세무사</div>
+        <div class="tx-title">세무법인 서월 대표 세무사</div>
+        <div class="tx-badges">
+          <span class="tx-badge">경력 5년+</span>
+          <span class="tx-badge">세무조정 2,000건+</span>
+          <span class="tx-badge">소상공인 전문</span>
+        </div>
+      </div>
+    </div>
+    <div class="tx-quote">2,000건이 넘는 세무조정을 하면서 가장 많이 들은 말이 있어요. "세무사가 뭘 해주는지 모르겠어요." 저는 사장님이 사업에만 집중하실 수 있도록, 세금과 정부지원금은 제가 먼저 챙기겠습니다.</div>
+  </div>
+</div>
+<div class="dv"></div>
+<div class="contact-sec" id="contact-section">
+  <div class="ct-hd">
+    <div class="sec-tag">📞 무료 상담 신청</div>
+    <div class="ct-title">연락처만 남겨주세요<br/>백승삼 세무사가 <span style="color:var(--p);">직접 연락</span>드립니다</div>
+    <div class="ct-sub">상담만 받아보셔도 괜찮아요. 부담 없이 비교해보세요.</div>
+  </div>
+  <div class="ct-form-wrap" id="formWrap">
+    <form id="cf">
+      <div class="fg"><label>성함</label><input type="text" id="nm" placeholder="이름을 입력하세요" required/></div>
+      <div class="fg"><label>연락처</label>
+        <div class="phrow">
+          <input type="tel" id="p1" value="010" readonly style="max-width:68px;"/>
+          <span class="phdash">—</span>
+          <input type="tel" id="p2" placeholder="0000" maxlength="4" inputmode="numeric"/>
+          <span class="phdash">—</span>
+          <input type="tel" id="p3" placeholder="0000" maxlength="4" inputmode="numeric"/>
+        </div>
+      </div>
+      <div class="agwrap">
+        <div class="agrow"><label class="agl"><input type="checkbox" id="ag1" checked required/><span>개인정보처리방침 동의 (필수)</span></label><span class="agv" onclick="alert('수집: 이름,연락처 / 목적: 상담연락 / 보유: 상담후 즉시파기')">보기</span></div>
+        <div class="agrow"><label class="agl"><input type="checkbox" id="ag2" checked required/><span>제3자제공 및 활용 동의 (필수)</span></label><span class="agv" onclick="alert('제공: 세무법인 서월 / 목적: 기장상담 / 항목: 이름,연락처')">보기</span></div>
+        <div class="agrow"><label class="agl"><input type="checkbox" id="ag3" checked/><span>마케팅수신 동의 (선택)</span></label><span class="agv" onclick="alert('절세팁,혜택 안내 등 문자/카카오 발송')">보기</span></div>
+      </div>
+      <button type="submit" class="subbtn">📞 무료 상담 신청하기</button>
+      <div class="sub-note">🔒 연락처는 상담 목적으로만 사용되며, 절대 다른 곳에 제공되지 않습니다</div>
+    </form>
+  </div>
+  <div class="done" id="done">
+    <div class="di">🎉</div><h2>신청 완료!</h2>
+    <p><strong id="done-nm"></strong>님, 감사합니다!<br/>백승삼 세무사가 직접 확인하고<br/>빠르면 오늘, 늦어도 내일까지 연락드립니다 😊</p>
+    <div class="done-box">✅ <strong>첫달 기장료 100% 지원</strong>이 자동 적용됩니다.<br/>상담 시 "당근 광고 보고 신청했어요" 라고 말씀해 주세요!</div>
+    <div class="scroll-hint">⬇ 아래에서 서비스를 더 알아보세요</div>
+  </div>
+</div>
+<div class="dv"></div>
+<div class="pol-sec">
+  <div class="pol-tag">🏦 정책자금 · 정부지원금</div>
+  <div class="pol-title">세무기장부터<br/><span class="hl">정책자금까지</span><br/>세무사가 직접 챙깁니다</div>
+  <div class="pol-desc">많은 사장님들이 받을 수 있는 정부지원금을<br/>몰라서 그냥 지나치고 있어요.<br/>저희가 업종에 맞는 정책자금을 직접 분석해<br/>기장 계약 고객께 리포트로 제공해드립니다.</div>
+  <div class="pol-box">
+    <div class="pol-ttl">📋 정책자금 리포트 포함 내용</div>
+    <div class="pi"><div class="pck">✓</div><div class="pt"><strong>업종별 신청 가능 정부지원금</strong> 목록</div></div>
+    <div class="pi"><div class="pck">✓</div><div class="pt"><strong>소상공인·중소기업 정책자금</strong> 안내</div></div>
+    <div class="pi"><div class="pck">✓</div><div class="pt"><strong>고용지원금·창업지원금</strong> 수령 조건</div></div>
+    <div class="pi"><div class="pck">✓</div><div class="pt"><strong>세무사가 직접 분석</strong>한 우선순위 추천</div></div>
+  </div>
+  <div class="pol-cta"><div class="pol-cta-t">📋 기장 계약 고객께 리포트 무료 제공</div><div class="pol-cta-s">기장 계약 체결 시 바로 제공해드립니다</div></div>
+</div>
+<div class="dv"></div>
+<section class="sec">
+  <div class="sec-tag">서비스 안내</div><div class="sec-title">이런 일들을 대신 해드려요</div><div class="sec-sub">세금 걱정 없이 사업에만 집중하세요</div>
+  <div class="svc-grid">
+    <div class="sc"><div class="sc-i">📒</div><div class="sc-n">세무기장</div><div class="sc-d">매월 장부 관리<br/>세금신고 대행</div></div>
+    <div class="sc"><div class="sc-i">💰</div><div class="sc-n">부가가치세</div><div class="sc-d">1·7월 신고<br/>환급 최대화</div></div>
+    <div class="sc"><div class="sc-i">🧾</div><div class="sc-n">종합소득세</div><div class="sc-d">5월 신고<br/>절세 전략 포함</div></div>
+    <div class="sc"><div class="sc-i">🏢</div><div class="sc-n">법인세</div><div class="sc-d">결산·신고<br/>법인 운영 지원</div></div>
+    <div class="sc"><div class="sc-i">👤</div><div class="sc-n">4대보험·급여</div><div class="sc-d">직원 급여 계산<br/>사회보험 신고</div></div>
+    <div class="sc"><div class="sc-i">🏁</div><div class="sc-n">사업자 등록</div><div class="sc-d">창업 초기 설정<br/>업종·유형 상담</div></div>
+  </div>
+</section>
+<div class="dv"></div>
+<section class="sec" style="background:var(--bg);">
+  <div class="sec-tag">고객 후기</div><div class="sec-title">실제로 맡기신 분들의 이야기</div>
+  <div class="rv-wrap">
+    <div class="rv"><div class="rv-hd"><div class="rv-av">🍕</div><div><div class="rv-nm">배달 음식점 사장님</div><div class="rv-tp">개인사업자 · 기장 6개월째</div></div></div><div class="rv-st">★★★★★</div><div class="rv-tx">카톡으로 물어보면 빠르게 답해주셔서 너무 편해요. 세금 시즌마다 걱정이었는데 이제는 그냥 맡기고 잊어버려요 😊</div></div>
+    <div class="rv"><div class="rv-hd"><div class="rv-av">💇</div><div><div class="rv-nm">헤어샵 원장님</div><div class="rv-tp">개인사업자 · 기장 1년째</div></div></div><div class="rv-st">★★★★★</div><div class="rv-tx">전에 쓰던 세무사는 물어봐야만 알려줬는데 여기는 먼저 연락이 와요. 정책자금도 챙겨주시고 첫달 혜택도 있어서 너무 좋아요!</div></div>
+    <div class="rv"><div class="rv-hd"><div class="rv-av">🛒</div><div><div class="rv-nm">온라인 쇼핑몰 운영자</div><div class="rv-tp">개인사업자 · 기장 8개월째</div></div></div><div class="rv-st">★★★★★</div><div class="rv-tx">전 세무사는 답장이 3일씩 걸렸는데, 여기는 당일 답변에 정책자금까지 챙겨주셔서 정말 만족합니다.</div></div>
+  </div>
+</section>
+<div class="dv"></div>
+<section class="sec">
+  <div class="sec-tag">자주 묻는 질문</div><div class="sec-title">이런 게 궁금하셨나요?</div>
+  <div>
+    <div class="faq-item"><div class="fq" onclick="faq(this)">기장료가 정확히 얼마인가요?<span class="farr">▼</span></div><div class="fa">개인사업자는 업종·매출에 따라 월 8만원부터 시작합니다. 상담 후 정확한 금액 안내해드려요.</div></div>
+    <div class="faq-item"><div class="fq" onclick="faq(this)">기존 세무사에서 바꾸는 게 복잡한가요?<span class="farr">▼</span></div><div class="fa">전혀 복잡하지 않아요! 기존 세무사와의 정리 방법, 자료 이전까지 저희가 다 안내해드립니다.</div></div>
+    <div class="faq-item"><div class="fq" onclick="faq(this)">첫달 지원 혜택은 어떻게 받나요?<span class="farr">▼</span></div><div class="fa">이 페이지를 통해 상담 신청하신 분께 자동 적용됩니다. 상담 시 "당근 광고 보고 연락했어요"라고 말씀만 해주세요.</div></div>
+    <div class="faq-item"><div class="fq" onclick="faq(this)">상담 후 꼭 계약해야 하나요?<span class="farr">▼</span></div><div class="fa">아니요, 전혀 부담 없어요. 무료 상담만 받고 결정하지 않으셔도 됩니다 😊</div></div>
+  </div>
+</section>
+<div class="dv"></div>
+<div class="btm">
+  <div class="btm-top">지금 바꾸지 않으셔도 괜찮아요. 비교만 해보세요 😊</div>
+  <button class="btm-btn" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">📞 무료 상담 신청하기 →</button>
+</div>
+<footer><strong>세무법인 서월</strong> | 공인 세무사 백승삼<br/>수집된 개인정보(이름, 연락처)는 세무 상담 목적으로만 사용되며, 상담 완료 후 즉시 파기합니다.</footer>
+<script>
+var SU="https://script.google.com/macros/s/AKfycbwsPmXi78L1Osu4MS68-YTxY2iTUyGJowHd63Q6-nk1ixE7W5qBuKhc2zGcXFd2v3fI-Q/exec";
+document.getElementById('cf').addEventListener('submit',function(e){e.preventDefault();var nm=document.getElementById('nm').value.trim();var p2=document.getElementById('p2').value.trim();var p3=document.getElementById('p3').value.trim();if(!nm||p2.length<3||p3.length<4){alert('이름과 연락처를 모두 입력해주세요.');return;}fetch(SU,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:nm,phone:'010-'+p2+'-'+p3,bizType:'',usingService:'',source:'🥕 당근마켓'})}).catch(function(){});document.getElementById('formWrap').style.display='none';var d=document.getElementById('done');d.style.display='block';document.getElementById('done-nm').textContent=nm;document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});});
+['p2','p3'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');});});
 
+function faq(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
+</script>
+</body>
+</html>
