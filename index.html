@@ -287,6 +287,67 @@
   .submit:not(:disabled):active{background:var(--orange-dark);}
   .ct-note{text-align:center;font-size:12px;color:var(--text-3);margin-top:12px;}
 
+  /* ===== Multi-step form ===== */
+  .form-steps{
+    display:flex;justify-content:center;gap:8px;margin:8px 0 22px;
+  }
+  .form-steps .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--line);transition:all .25s ease;
+  }
+  .form-steps .dot.active{background:var(--orange);transform:scale(1.15);}
+  .form-steps .dot.done{background:var(--orange);opacity:0.5;}
+
+  .form-step{display:none;animation:stepFade .28s ease;}
+  .form-step.active{display:block;}
+  @keyframes stepFade{
+    from{opacity:0;transform:translateY(8px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .step-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-0.02em;}
+  .step-sub{font-size:13.5px;color:var(--text-2);margin-bottom:18px;line-height:1.65;}
+
+  /* 사업자 유형 큰 탭 버튼 */
+  .biz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .biz-opt{
+    padding:18px 14px;border:1px solid var(--line);border-radius:10px;
+    background:var(--bg);font-size:14.5px;font-weight:600;color:var(--text);
+    cursor:pointer;text-align:center;
+    transition:all .15s ease;
+  }
+  .biz-opt:hover{border-color:var(--orange);background:var(--orange-soft);}
+  .biz-opt:active{transform:scale(0.98);}
+  .biz-opt .b-sub{
+    display:block;font-size:11px;font-weight:400;color:var(--text-3);margin-top:3px;
+  }
+  .biz-opt.selected{
+    border-color:var(--orange);background:var(--orange-soft);color:var(--orange-dark);
+  }
+
+  /* 단계 네비게이션 */
+  .step-nav{display:flex;gap:10px;margin-top:18px;}
+  .step-back, .step-next{
+    flex:1;padding:15px;border-radius:10px;font-size:15px;font-weight:600;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .step-back{
+    background:var(--bg);color:var(--text-2);border:1px solid var(--line);
+    flex:0 0 35%;
+  }
+  .step-back:hover{border-color:var(--text-3);color:var(--text);}
+  .step-next{
+    background:var(--orange);color:#fff;border:none;
+  }
+  .step-next:disabled{background:#E5E5E5;color:#AAA;cursor:not-allowed;}
+  .step-next:not(:disabled):active{background:var(--orange-dark);}
+
+  .opt-tag{
+    display:inline-block;font-size:11px;font-weight:500;color:var(--text-3);
+    padding:2px 7px;background:var(--bg-soft);border-radius:4px;
+    margin-left:6px;letter-spacing:0;
+  }
+
   /* ===== Done screen ===== */
   .done{display:none;padding:56px 24px;text-align:center;}
   .done.show{display:block;}
@@ -535,49 +596,92 @@
     </div>
 
     <form id="leadForm" onsubmit="return submitForm(event)">
-      <div class="fg">
-        <label for="nm">성함</label>
-        <input type="text" id="nm" name="nm" placeholder="이름을 입력해주세요" required/>
-      </div>
-      <div class="fg">
-        <label for="ph">연락처</label>
-        <input type="tel" id="ph" name="ph" placeholder="010-0000-0000" required/>
-      </div>
-      <div class="fg">
-        <label for="tp">사업자 유형</label>
-        <select id="tp" name="tp" required>
-          <option value="">선택해주세요</option>
-          <option value="개인사업자">개인사업자</option>
-          <option value="법인사업자">법인사업자</option>
-          <option value="신규창업">신규 창업 예정</option>
-          <option value="기타">기타 / 상담만</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label for="mm">문의 내용 <span style="color:var(--text-3);font-weight:400;">(선택)</span></label>
-        <textarea id="mm" name="mm" placeholder="현재 상황이나 궁금한 점을 적어주세요"></textarea>
+
+      <!-- 진행도 도트 3개 -->
+      <div class="form-steps" aria-hidden="true">
+        <span class="dot active" data-dot="1"></span>
+        <span class="dot" data-dot="2"></span>
+        <span class="dot" data-dot="3"></span>
       </div>
 
-      <div class="agrees">
-        <div class="agrow">
-          <label class="agl"><input type="checkbox" id="ag1" required/><span>개인정보 수집·이용 동의 (필수)</span></label>
-          <span class="tag-view" onclick="toggleTerms('t1')">보기</span>
+      <!-- 1단계: 사업자 유형 -->
+      <div class="form-step active" data-step="1">
+        <div class="step-title">어떤 사업자이신가요?</div>
+        <p class="step-sub">해당하는 항목을 탭하시면 다음 단계로 자동 이동합니다.</p>
+        <div class="biz-options">
+          <button type="button" class="biz-opt" data-value="개인사업자" onclick="selectBiz(this)">
+            개인사업자
+            <span class="b-sub">단독 운영</span>
+          </button>
+          <button type="button" class="biz-opt" data-value="법인사업자" onclick="selectBiz(this)">
+            법인사업자
+            <span class="b-sub">주식회사·유한회사 등</span>
+          </button>
+          <button type="button" class="biz-opt" data-value="신규창업" onclick="selectBiz(this)">
+            신규 창업 예정
+            <span class="b-sub">사업자 등록 전</span>
+          </button>
+          <button type="button" class="biz-opt" data-value="기타" onclick="selectBiz(this)">
+            기타 / 상담만
+            <span class="b-sub">단순 문의</span>
+          </button>
         </div>
-        <div class="terms-box" id="t1">수집항목: 성함, 연락처, 사업자 유형, 문의 내용 / 이용목적: 세무 상담 안내 및 회신 / 보유기간: 상담 완료 후 3개월까지, 이후 파기</div>
-        <div class="agrow">
-          <label class="agl"><input type="checkbox" id="ag2" required/><span>제3자 제공 동의 (필수)</span></label>
-          <span class="tag-view" onclick="toggleTerms('t2')">보기</span>
-        </div>
-        <div class="terms-box" id="t2">제공받는 자: 세무법인 서월 담당 세무사 / 제공 목적: 상담 회신 / 제공 항목: 성함, 연락처, 문의 내용</div>
-        <div class="agrow">
-          <label class="agl"><input type="checkbox" id="ag3"/><span>마케팅·절세 정보 수신 동의 (선택)</span></label>
-          <span class="tag-view" onclick="toggleTerms('t3')">보기</span>
-        </div>
-        <div class="terms-box" id="t3">세무법인 서월의 절세 정보, 세무 일정 안내 등을 카카오톡·문자로 수신합니다. 언제든 수신 거부가 가능합니다.</div>
+        <input type="hidden" id="tp" name="tp" required/>
       </div>
 
-      <button type="submit" class="submit" id="submitBtn">상담 신청하기</button>
-      <p class="ct-note">연락처는 상담 목적 외에는 사용되지 않습니다.</p>
+      <!-- 2단계: 성함 + 연락처 -->
+      <div class="form-step" data-step="2">
+        <div class="step-title">연락받으실 정보를 알려주세요</div>
+        <p class="step-sub">백승삼 세무사가 직접 회신드립니다.</p>
+        <div class="fg">
+          <label for="nm">성함</label>
+          <input type="text" id="nm" name="nm" placeholder="이름을 입력해주세요"/>
+        </div>
+        <div class="fg">
+          <label for="ph">연락처</label>
+          <input type="tel" id="ph" name="ph" placeholder="010-0000-0000"/>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="step-back" onclick="goStep(1)">← 이전</button>
+          <button type="button" class="step-next" id="nextTo3" onclick="goStep(3)">다음 →</button>
+        </div>
+      </div>
+
+      <!-- 3단계: 문의(선택) + 동의 + 신청 -->
+      <div class="form-step" data-step="3">
+        <div class="step-title">마지막 단계입니다</div>
+        <p class="step-sub">동의 후 상담 신청을 완료해주세요.</p>
+
+        <div class="fg">
+          <label for="mm">문의 내용 <span class="opt-tag">선택사항 · 비워두셔도 됩니다</span></label>
+          <textarea id="mm" name="mm" placeholder="현재 상황이나 궁금한 점이 있으면 적어주세요"></textarea>
+        </div>
+
+        <div class="agrees">
+          <div class="agrow">
+            <label class="agl"><input type="checkbox" id="ag1"/><span>개인정보 수집·이용 동의 (필수)</span></label>
+            <span class="tag-view" onclick="toggleTerms('t1')">보기</span>
+          </div>
+          <div class="terms-box" id="t1">수집항목: 성함, 연락처, 사업자 유형, 문의 내용 / 이용목적: 세무 상담 안내 및 회신 / 보유기간: 상담 완료 후 3개월까지, 이후 파기</div>
+          <div class="agrow">
+            <label class="agl"><input type="checkbox" id="ag2"/><span>제3자 제공 동의 (필수)</span></label>
+            <span class="tag-view" onclick="toggleTerms('t2')">보기</span>
+          </div>
+          <div class="terms-box" id="t2">제공받는 자: 세무법인 서월 담당 세무사 / 제공 목적: 상담 회신 / 제공 항목: 성함, 연락처, 문의 내용</div>
+          <div class="agrow">
+            <label class="agl"><input type="checkbox" id="ag3"/><span>마케팅·절세 정보 수신 동의 (선택)</span></label>
+            <span class="tag-view" onclick="toggleTerms('t3')">보기</span>
+          </div>
+          <div class="terms-box" id="t3">세무법인 서월의 절세 정보, 세무 일정 안내 등을 카카오톡·문자로 수신합니다. 언제든 수신 거부가 가능합니다.</div>
+        </div>
+
+        <div class="step-nav">
+          <button type="button" class="step-back" onclick="goStep(2)">← 이전</button>
+          <button type="submit" class="step-next" id="submitBtn">상담 신청 완료</button>
+        </div>
+        <p class="ct-note">연락처는 상담 목적 외에는 사용되지 않습니다.</p>
+      </div>
+
     </form>
   </section>
 
@@ -606,6 +710,62 @@
 </div>
 
 <script>
+  // ===== Multi-step form =====
+  var currentStep = 1;
+
+  function selectBiz(btn){
+    // 사업자 유형 선택 시: 값 저장 + 시각 표시 + 자동 다음 단계
+    document.querySelectorAll('.biz-opt').forEach(function(b){ b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    document.getElementById('tp').value = btn.dataset.value;
+    // 즉시 다음 단계로 (탭 한 번에 진행 — 마찰 최소화)
+    setTimeout(function(){ goStep(2); }, 180);
+  }
+
+  function goStep(n){
+    // 다음으로 갈 때 현재 단계 유효성 검증
+    if(n > currentStep){
+      if(!validateStep(currentStep)) return;
+    }
+    currentStep = n;
+    // 단계 화면 토글
+    document.querySelectorAll('.form-step').forEach(function(el){
+      el.classList.toggle('active', parseInt(el.dataset.step) === n);
+    });
+    // 도트 업데이트
+    document.querySelectorAll('.form-steps .dot').forEach(function(d){
+      var num = parseInt(d.dataset.dot);
+      d.classList.remove('active','done');
+      if(num === n) d.classList.add('active');
+      else if(num < n) d.classList.add('done');
+    });
+    // 폼 영역 상단으로 스크롤 (모바일 키보드 가림 방지)
+    var form = document.getElementById('leadForm');
+    var rect = form.getBoundingClientRect();
+    if(rect.top < 60 || rect.top > window.innerHeight - 200){
+      form.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  }
+
+  function validateStep(n){
+    if(n === 1){
+      if(!document.getElementById('tp').value){
+        alert('사업자 유형을 선택해주세요.');
+        return false;
+      }
+    } else if(n === 2){
+      var nm = document.getElementById('nm').value.trim();
+      var ph = document.getElementById('ph').value.trim();
+      if(!nm){ alert('성함을 입력해주세요.'); document.getElementById('nm').focus(); return false; }
+      if(!ph || ph.replace(/[^0-9]/g,'').length < 10){
+        alert('연락처를 정확히 입력해주세요.');
+        document.getElementById('ph').focus();
+        return false;
+      }
+    }
+    return true;
+  }
+
   // FAQ toggle
   function toggleFaq(btn){
     var faq = btn.parentElement;
@@ -638,6 +798,19 @@
 
   function submitForm(e){
     e.preventDefault();
+
+    // 3단계 최종 제출 검증
+    var ag1 = document.getElementById('ag1').checked;
+    var ag2 = document.getElementById('ag2').checked;
+    if(!ag1 || !ag2){
+      alert('필수 동의 항목에 체크해주세요.');
+      return false;
+    }
+    // 1·2단계 데이터 안전망 재검증
+    if(!validateStep(1) || !validateStep(2)){
+      return false;
+    }
+
     var btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = '신청 중...';
@@ -670,7 +843,7 @@
         console.error('Submit failed:', err);
         showFallback(data.name);
         btn.disabled = false;
-        btn.textContent = '상담 신청하기';
+        btn.textContent = '상담 신청 완료';
       });
 
     return false;
